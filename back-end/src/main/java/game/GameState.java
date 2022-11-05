@@ -5,14 +5,18 @@ import java.util.Arrays;
 public class GameState {
 
     private final Cell[] cells;
+    private final int player;
+    private final Player winner;
 
-    private GameState(Cell[] cells) {
+    private GameState(Cell[] cells, int player, Player winner) {
         this.cells = cells;
+        this.player = player;
+        this.winner = winner;
     }
 
     public static GameState forGame(Game game) {
         Cell[] cells = getCells(game);
-        return new GameState(cells);
+        return new GameState(cells, game.getPlayer().value, game.getWinner());
     }
 
     public Cell[] getCells() {
@@ -25,6 +29,7 @@ public class GameState {
      */
     @Override
     public String toString() {
+        // Gson??
         return "{ \"cells\": " + Arrays.toString(this.cells) + "}";
     }
 

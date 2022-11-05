@@ -32,6 +32,7 @@ public class App extends NanoHTTPD {
     @Override
     public Response serve(IHTTPSession session) {
         String uri = session.getUri();
+        System.out.println(uri);
         Map<String, String> params = session.getParms();
         if (uri.equals("/newgame")) {
             this.game = new Game();
